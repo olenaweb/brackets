@@ -21,13 +21,16 @@ module.exports = function check(str, bracketsConfig) {
 
   while (str.length > 0) {
     // для каждого елемента массива конфигурации ищем соответствие в строке и удаляем его
-    simpleBracketsConfig.forEach((elem) => {
-      // debugger;
-      // console.log('elem= ' + elem);
-      // console.log('str1= ' + str);
+    for (let elem of simpleBracketsConfig) {
+      console.log('elem= ' + elem);
+      console.log('str1= ' + str);
       str = str.replaceAll(elem, "");
-      // console.log('str2= ' + str);
-    });
+      console.log('str2= ' + str);
+      // все скобки удалены
+      if (str.length == 0) {
+        return true;
+      }
+    };
     // скобки не найдены 
     if (str.length == old_length) {
       return false;
@@ -36,5 +39,4 @@ module.exports = function check(str, bracketsConfig) {
     old_length = str.length;
     // debugger;
   }
-  return true;
 }
